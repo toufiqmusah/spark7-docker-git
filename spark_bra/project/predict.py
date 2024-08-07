@@ -12,7 +12,7 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 import sys
-sys.path.append('C:/Users/OWNER/Desktop/SPARK-DOCKER/mednext')
+# sys.path.append('C:/Users/OWNER/Desktop/SPARK-DOCKER/mednext')
 
 
 import argparse

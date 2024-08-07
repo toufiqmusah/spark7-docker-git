@@ -20,10 +20,11 @@ tasks:
     parameters: 
       inputs: {
         data_path: data/,
-        parameters_file: parameters.yaml,
+        # parameters_file: parameters.yaml,
         # Feel free to include other files required for inference.
         # These files MUST go inside the additional_files path.
         # e.g. model weights
         # weights: additional_files/weights.pt,
+        model_path: additional_files/3d_full,
         }
       outputs: {output_path: {type: directory, default: predictions}}

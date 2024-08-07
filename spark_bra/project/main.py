@@ -33,5 +33,3 @@ def run_inference(input_path: str, model_path: str, output_path: str):
     if len(os.listdir(MedNext_Predictions)) > 1:
         copy_brats_files(Predictions)
         rename_files_to_brats(Predictions)
-
-run_inference(input_path, "./3d_full/")
