@@ -3,7 +3,7 @@ import sys
 import torch
 import subprocess
 
-from processor import (change_modalities, 
+from spark_bra.project.processor import (change_modalities, 
                        rename_files_to_mednext, 
                        copy_brats_files, 
                        rename_files_to_brats)
@@ -18,7 +18,7 @@ imagesTs = f"{root_dir}/imagesTs"
 MedNext_Predictions = f"{root_dir}/MedNext_Predictions"
 
 
-def run_inference(input_path: str, model_path: str):
+def run_inference(input_path: str, model_path: str, output_path: str):
     if len(os.listdir(imagesTs)) <= 0:
         change_modalities(input_path, imagesTs)
         rename_files_to_mednext(imagesTs)
@@ -27,11 +27,11 @@ def run_inference(input_path: str, model_path: str):
 
     os.system(f"python predict.py -i imagesTs -o MedNext_Predictions -m {model_path} -f 4")
 
-    os.makedirs(f"{root_dir}/Predictions", exist_ok = True)
-    Predictions = f"{root_dir}/Predictions"
+    os.makedirs(f"{root_dir}/{output_path}", exist_ok = True)
+    Predictions = f"{root_dir}/{output_path}"
 
     if len(os.listdir(MedNext_Predictions)) > 1:
         copy_brats_files(Predictions)
         rename_files_to_brats(Predictions)
 
-run_inference(input_path, "C:/Users/OWNER/Desktop/spark7-docker/3d_full/")
+run_inference(input_path, "./3d_full/")
