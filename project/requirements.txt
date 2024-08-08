@@ -1,5 +1,8 @@
 typer
 torch==2.4.0
--e git+https://github.com/MIC-DKFZ/MedNeXt.git@c5ed3f38b56d58c80581c75fea856865f42ddb75#egg=mednextv1
--e git+https://github.com/MIC-DKFZ/nnUNet.git@4f2ffabe751977ee66348560c8e99102e8553195#egg=nnunet
--e git+https://github.com/mlcommons/medperf.git@d072303e0bd457030da03ea9d1ab94920e0fd8af#egg=medperf&subdirectory=cli
+
+# Keep the lines below commented when building the docker image but you have to install them on the local machine first 
+
+# -e git+https://github.com/MIC-DKFZ/MedNeXt.git@c5ed3f38b56d58c80581c75fea856865f42ddb75#egg=mednextv1
+# -e git+https://github.com/MIC-DKFZ/nnUNet.git@4f2ffabe751977ee66348560c8e99102e8553195#egg=nnunet
+# -e git+https://github.com/mlcommons/medperf.git@d072303e0bd457030da03ea9d1ab94920e0fd8af#egg=medperf&subdirectory=cli

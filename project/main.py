@@ -8,8 +8,6 @@ from processor import (change_modalities,
                        copy_brats_files, 
                        rename_files_to_brats)
 
-input_path = "C:/Users/OWNER/Desktop/SPARK-DOCKER/BraTS2024-SSA-Challenge-ValidationData"
-
 root_dir = os.path.dirname(__file__)
 os.makedirs(f"{root_dir}/imagesTs", exist_ok = True)
 os.makedirs(f"{root_dir}/MedNext_Predictions", exist_ok = True)
@@ -34,4 +32,4 @@ def run_inference(input_path: str, model_path: str, output_path: str):
         copy_brats_files(Predictions)
         rename_files_to_brats(Predictions)
 
-run_inference(input_path, "/home/etornam/Documents/code/spark7-docker-git/mlcube/workspace/additional_files/3d_full", "predictions")
+# run_inference("../BraTS2024-SSA-Challenge-ValidationData", "/home/etornam/Documents/code/spark7-docker-git/mlcube/workspace/additional_files/3d_full", "predictions")
