@@ -3,7 +3,7 @@ import sys
 import torch
 import subprocess
 
-from spark_bra.project.processor import (change_modalities, 
+from processor import (change_modalities, 
                        rename_files_to_mednext, 
                        copy_brats_files, 
                        rename_files_to_brats)
@@ -33,3 +33,5 @@ def run_inference(input_path: str, model_path: str, output_path: str):
     if len(os.listdir(MedNext_Predictions)) > 1:
         copy_brats_files(Predictions)
         rename_files_to_brats(Predictions)
+
+run_inference(input_path, "/home/etornam/Documents/code/spark7-docker-git/mlcube/workspace/additional_files/3d_full", "predictions")

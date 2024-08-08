@@ -12,7 +12,10 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 import sys
-# sys.path.append('C:/Users/OWNER/Desktop/SPARK-DOCKER/mednext')
+from os.path import join, isfile, isdir
+import os
+
+# sys.path.append("..")
 
 
 import argparse
@@ -21,17 +24,22 @@ from typing import Tuple, Union, List
 
 import numpy as np
 from batchgenerators.augmentations.utils import resize_segmentation
-from nnunet_mednext.inference.segmentation_export import save_segmentation_nifti_from_softmax, save_segmentation_nifti
+# from nnunet_mednext.inference.segmentation_export import save_segmentation_nifti_from_softmax, save_segmentation_nifti
+from src.mednextv1.nnunet_mednext.training.model_restore import load_model_and_checkpoint_files
 from batchgenerators.utilities.file_and_folder_operations import *
 from multiprocessing import Process, Queue
 import torch
 import SimpleITK as sitk
 import shutil
 from multiprocessing import Pool
-from nnunet_mednext.postprocessing.connected_components import load_remove_save, load_postprocessing
-from nnunet_mednext.training.model_restore import load_model_and_checkpoint_files
-from nnunet_mednext.training.network_training.nnUNetTrainer import nnUNetTrainer
-from nnunet_mednext.utilities.one_hot_encoding import to_one_hot
+from src.mednextv1.nnunet_mednext.inference.segmentation_export import save_segmentation_nifti, save_segmentation_nifti_from_softmax
+from src.mednextv1.nnunet_mednext.postprocessing.connected_components import load_postprocessing, load_remove_save
+from src.nnunet.nnunet.training.network_training.nnUNetTrainer import nnUNetTrainer
+# from nnunet_mednext.postprocessing.connected_components import load_remove_save, load_postprocessing
+# from nnunet_mednext.training.model_restore import load_model_and_checkpoint_files
+# save_segmentation_nifti_from_softmax
+
+from src.nnunet.nnunet.utilities.one_hot_encoding import to_one_hot
 
 
 def preprocess_save_to_queue(preprocess_fn, q, list_of_lists, output_files, segs_from_prev_stage, classes,
